@@ -1,9 +1,9 @@
-import 'package:core_200_d020/core_200_d020_exp.dart';
+import 'package:van_tan_export/van_tan_export.dart';
 
 /// -----
 /// TODO: CoreScreenDependencyManager - [Cấu Trúc] Quản Lý Thành Phần Màn Hình Phụ Thuộc
 /// -----
-class CoreScreenDependencyManager with ExecutionCore {
+class CoreScreenDependencyManager with ExecutionCore, CoreComponent, CoreState {
   /// -----
   /// TODO: Attach Root
   /// -----

@@ -12,8 +12,8 @@ dependencies:
   flutter:
     sdk: flutter
 
-  core_200_d020:
-    path: ../core_200_d020
+  van_tan_export:
+    path: ../../van_tan_exports/van_tan_export
 
 dev_dependencies:
   #  flutter_test:

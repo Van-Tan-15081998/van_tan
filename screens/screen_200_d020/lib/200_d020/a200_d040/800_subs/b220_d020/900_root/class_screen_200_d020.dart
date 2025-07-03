@@ -1,9 +1,9 @@
-import 'package:core_200_d020/core_200_d020_exp.dart';
+import 'package:van_tan_export/van_tan_export.dart';
 
 /// -----
 /// TODO: CoreCompositeDependencyManager - [Cấu Trúc] Quản Lý Thành Phần Phức Hợp Phụ Thuộc
 /// -----
-class CoreCompositeDependencyManager with ExecutionCore {
+class CoreCompositeDependencyManager with ExecutionCore, CoreComponent, CoreState {
   /// -----
   /// TODO: Attach Root
   /// -----

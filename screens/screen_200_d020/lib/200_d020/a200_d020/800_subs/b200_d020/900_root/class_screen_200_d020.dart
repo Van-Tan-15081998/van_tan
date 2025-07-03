@@ -1,4 +1,4 @@
-import 'package:core_200_d020/core_200_d020_exp.dart';
+import 'package:van_tan_export/van_tan_export.dart';
 
 /// -----
 /// TODO: CoreScreenBindingComponent - [Cấu Trúc] Thành Phần Màn Hình Phụ Thuộc

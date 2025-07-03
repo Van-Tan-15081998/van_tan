@@ -1,9 +1,16 @@
-import 'package:core_200_d020/core_200_d020_exp.dart';
+export 'package:flutter/material.dart';
+import 'package:van_tan_export/van_tan_export.dart';
 
 /// -----
 /// TODO: CoreMasterScreenController - [Cấu Trúc] Màn Hình Điều Khiển Master
 /// -----
-class CoreMasterScreenController with ExecutionCore {
+class CoreMasterScreenController extends FlameGame with ExecutionCore, CoreComponent, CoreState{
+  /// -----
+  /// TODO:
+  /// -----
+  @override
+  Color backgroundColor() => Colors.transparent;
+
   /// -----
   /// TODO: Attach Root
   /// -----
@@ -137,6 +144,12 @@ class CoreMasterScreenController with ExecutionCore {
       /// TODO:
       /// -----
       await Future.wait([
+        getScreenDependencyManager?.onSetupRoot().catchError((e) => null) ?? onReportRootIssue(nameFunction: '[onSetupRootForSubCom]'),
+        getButtonDependencyManager?.onSetupRoot().catchError((e) => null) ?? onReportRootIssue(nameFunction: '[onSetupRootForSubCom]'),
+        getTextDependencyManager?.onSetupRoot().catchError((e) => null) ?? onReportRootIssue(nameFunction: '[onSetupRootForSubCom]'),
+        getImageDependencyManager?.onSetupRoot().catchError((e) => null) ?? onReportRootIssue(nameFunction: '[onSetupRootForSubCom]'),
+        getCompositeDependencyManager?.onSetupRoot().catchError((e) => null) ?? onReportRootIssue(nameFunction: '[onSetupRootForSubCom]'),
+
         ///
       ]);
 
@@ -160,6 +173,12 @@ class CoreMasterScreenController with ExecutionCore {
       /// TODO:
       /// -----
       await Future.wait([
+        getScreenDependencyManager?.onInitRoot().catchError((e) => null) ?? onReportRootIssue(nameFunction: '[onInitRootForSubCom]'),
+        getButtonDependencyManager?.onInitRoot().catchError((e) => null) ?? onReportRootIssue(nameFunction: '[onInitRootForSubCom]'),
+        getTextDependencyManager?.onInitRoot().catchError((e) => null) ?? onReportRootIssue(nameFunction: '[onInitRootForSubCom]'),
+        getImageDependencyManager?.onInitRoot().catchError((e) => null) ?? onReportRootIssue(nameFunction: '[onInitRootForSubCom]'),
+        getCompositeDependencyManager?.onInitRoot().catchError((e) => null) ?? onReportRootIssue(nameFunction: '[onInitRootForSubCom]'),
+
         ///
       ]);
 
@@ -183,6 +202,107 @@ class CoreMasterScreenController with ExecutionCore {
       /// -----
     } catch (e) {
       await onReportRootIssue(nameFunction: '[onResetRootForSubCom]');
+    }
+
+    ///
+    return;
+  }
+
+  /// -----
+  /// TODO: OnLoad
+  /// -----
+  @override
+  Future<void> onLoad() async {
+    super.onLoad();
+    debugMode = false;
+
+    ///
+    return;
+  }
+
+  /// -----
+  /// TODO: [Constructor]
+  /// -----
+  CoreMasterScreenController({required CoreStateManagement? globalStateManagementSystem, required double? sizeDx, required double? sizeDy}) {
+    onSetGlobalStateManagementSystem(value: globalStateManagementSystem, isPriorityOverride: true);
+    onSetSizeDx(value: sizeDx, isPriorityOverride: true);
+    onSetSizeDy(value: sizeDy, isPriorityOverride: true);
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  CoreScreenDependencyManager? _screenDependencyManager;
+  CoreScreenDependencyManager? get getScreenDependencyManager => _screenDependencyManager;
+  Future<void> onSetScreenDependencyManager({required CoreScreenDependencyManager? value, bool? isPriorityOverride}) async {
+    if (isPriorityOverride == true) {
+      _screenDependencyManager = value;
+    } else {
+      _screenDependencyManager ??= value;
+    }
+
+    ///
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  CoreButtonDependencyManager? _buttonDependencyManager;
+  CoreButtonDependencyManager? get getButtonDependencyManager => _buttonDependencyManager;
+  Future<void> onSetButtonDependencyManager({required CoreButtonDependencyManager? value, bool? isPriorityOverride}) async {
+    if (isPriorityOverride == true) {
+      _buttonDependencyManager = value;
+    } else {
+      _buttonDependencyManager ??= value;
+    }
+
+    ///
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  CoreTextDependencyManager? _textDependencyManager;
+  CoreTextDependencyManager? get getTextDependencyManager => _textDependencyManager;
+  Future<void> onSetTextDependencyManager({required CoreTextDependencyManager? value, bool? isPriorityOverride}) async {
+    if (isPriorityOverride == true) {
+      _textDependencyManager = value;
+    } else {
+      _textDependencyManager ??= value;
+    }
+
+    ///
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  CoreImageDependencyManager? _imageDependencyManager;
+  CoreImageDependencyManager? get getImageDependencyManager => _imageDependencyManager;
+  Future<void> onSetImageDependencyManager({required CoreImageDependencyManager? value, bool? isPriorityOverride}) async {
+    if (isPriorityOverride == true) {
+      _imageDependencyManager = value;
+    } else {
+      _imageDependencyManager ??= value;
+    }
+
+    ///
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  CoreCompositeDependencyManager? _compositeDependencyManager;
+  CoreCompositeDependencyManager? get getCompositeDependencyManager => _compositeDependencyManager;
+  Future<void> onSetCompositeDependencyManager({required CoreCompositeDependencyManager? value, bool? isPriorityOverride}) async {
+    if (isPriorityOverride == true) {
+      _compositeDependencyManager = value;
+    } else {
+      _compositeDependencyManager ??= value;
     }
 
     ///

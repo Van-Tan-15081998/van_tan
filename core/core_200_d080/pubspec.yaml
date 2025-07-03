@@ -12,6 +12,9 @@ dependencies:
   flutter:
     sdk: flutter
 
+  van_tan_export:
+    path: ../../van_tan_exports/van_tan_export
+
 dev_dependencies:
   #  flutter_test:
   #    sdk: flutter

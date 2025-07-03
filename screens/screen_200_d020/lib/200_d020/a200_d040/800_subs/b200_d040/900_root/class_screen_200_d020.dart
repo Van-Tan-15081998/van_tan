@@ -1,9 +1,9 @@
-import 'package:core_200_d020/core_200_d020_exp.dart';
+import 'package:van_tan_export/van_tan_export.dart';
 
 /// -----
 /// TODO: CoreButtonDependencyManager - [Cấu Trúc] Quản Lý Thành Phần Nút Bấm Phụ Thuộc
 /// -----
-class CoreButtonDependencyManager with ExecutionCore {
+class CoreButtonDependencyManager with ExecutionCore, CoreComponent, CoreState {
   /// -----
   /// TODO: Attach Root
   /// -----

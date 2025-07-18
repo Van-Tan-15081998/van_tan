@@ -137,6 +137,8 @@ class CoreCompositeDependencyManager with ExecutionCore, CoreComponent, CoreStat
       /// TODO:
       /// -----
       await Future.wait([
+        getCompositeBindingComponentManager?.onSetupRoot().catchError((e) => null) ?? onReportRootIssue(nameFunction: '[onSetupRootForSubCom]'),
+
         ///
       ]);
 
@@ -160,6 +162,8 @@ class CoreCompositeDependencyManager with ExecutionCore, CoreComponent, CoreStat
       /// TODO:
       /// -----
       await Future.wait([
+        getCompositeBindingComponentManager?.onInitRoot().catchError((e) => null) ?? onReportRootIssue(nameFunction: '[onInitRootForSubCom]'),
+
         ///
       ]);
 
@@ -183,6 +187,22 @@ class CoreCompositeDependencyManager with ExecutionCore, CoreComponent, CoreStat
       /// -----
     } catch (e) {
       await onReportRootIssue(nameFunction: '[onResetRootForSubCom]');
+    }
+
+    ///
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  CoreCompositeBindingComponentManager? _compositeBindingComponentManager;
+  CoreCompositeBindingComponentManager? get getCompositeBindingComponentManager => _compositeBindingComponentManager;
+  Future<void> onSetCompositeBindingComponentManager({required CoreCompositeBindingComponentManager? value, bool? isPriorityOverride}) async {
+    if (isPriorityOverride == true) {
+      _compositeBindingComponentManager = value;
+    } else {
+      _compositeBindingComponentManager ??= value;
     }
 
     ///

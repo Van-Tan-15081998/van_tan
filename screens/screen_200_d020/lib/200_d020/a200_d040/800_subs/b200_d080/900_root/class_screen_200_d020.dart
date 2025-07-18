@@ -137,6 +137,8 @@ class CoreImageDependencyManager with ExecutionCore, CoreComponent, CoreState {
       /// TODO:
       /// -----
       await Future.wait([
+        getImageBindingComponentManager?.onSetupRoot().catchError((e) => null) ?? onReportRootIssue(nameFunction: '[onSetupRootForSubCom]'),
+
         ///
       ]);
 
@@ -160,6 +162,9 @@ class CoreImageDependencyManager with ExecutionCore, CoreComponent, CoreState {
       /// TODO:
       /// -----
       await Future.wait([
+        getImageBindingComponentManager?.onInitRoot().catchError((e) => null) ?? onReportRootIssue(nameFunction: '[onInitRootForSubCom]'),
+
+
         ///
       ]);
 
@@ -183,6 +188,22 @@ class CoreImageDependencyManager with ExecutionCore, CoreComponent, CoreState {
       /// -----
     } catch (e) {
       await onReportRootIssue(nameFunction: '[onResetRootForSubCom]');
+    }
+
+    ///
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  CoreImageBindingComponentManager? _imageBindingComponentManager;
+  CoreImageBindingComponentManager? get getImageBindingComponentManager => _imageBindingComponentManager;
+  Future<void> onSetImageBindingComponentManager({required CoreImageBindingComponentManager? value, bool? isPriorityOverride}) async {
+    if (isPriorityOverride == true) {
+      _imageBindingComponentManager = value;
+    } else {
+      _imageBindingComponentManager ??= value;
     }
 
     ///

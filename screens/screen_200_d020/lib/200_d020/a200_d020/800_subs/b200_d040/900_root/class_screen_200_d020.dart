@@ -1,9 +1,9 @@
 import 'package:van_tan_export/van_tan_export.dart';
 
 /// -----
-/// TODO: CoreButtonBindingComponent - [Cấu Trúc] Thành Phần Nút Bấm Phụ Thuộc
+/// TODO: CoreButtonBindingComponentManager - [Cấu Trúc] Quản Lý Thành Phần Nút Bấm Phụ Thuộc
 /// -----
-class CoreButtonBindingComponent with ExecutionCore {
+class CoreButtonBindingComponentManager with ExecutionCore {
   /// -----
   /// TODO: Attach Root
   /// -----

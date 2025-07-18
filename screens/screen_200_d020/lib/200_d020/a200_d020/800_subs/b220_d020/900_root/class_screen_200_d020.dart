@@ -1,9 +1,9 @@
 import 'package:van_tan_export/van_tan_export.dart';
 
 /// -----
-/// TODO: CoreCompositeBindingComponent - [Cấu Trúc] Thành Phần Phức Hợp Phụ Thuộc
+/// TODO: CoreCompositeBindingComponentManager - [Cấu Trúc] Quản Lý Thành Phần Phức Hợp Phụ Thuộc
 /// -----
-class CoreCompositeBindingComponent with ExecutionCore {
+class CoreCompositeBindingComponentManager with ExecutionCore {
   /// -----
   /// TODO: Attach Root
   /// -----

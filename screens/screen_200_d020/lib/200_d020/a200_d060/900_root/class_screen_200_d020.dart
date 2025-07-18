@@ -1,10 +1,10 @@
-export 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:van_tan_export/van_tan_export.dart';
 
 /// -----
 /// TODO: CoreMasterScreenController - [Cấu Trúc] Màn Hình Điều Khiển Master
 /// -----
-class CoreMasterScreenController extends FlameGame with ExecutionCore, CoreComponent, CoreState{
+class CoreMasterScreenController extends FlameGame with ExecutionCore, CoreComponent, CoreState {
   /// -----
   /// TODO:
   /// -----
@@ -230,7 +230,7 @@ class CoreMasterScreenController extends FlameGame with ExecutionCore, CoreCompo
   }
 
   /// -----
-  /// TODO:
+  /// TODO: Screen Dependency Manager
   /// -----
   CoreScreenDependencyManager? _screenDependencyManager;
   CoreScreenDependencyManager? get getScreenDependencyManager => _screenDependencyManager;
@@ -246,7 +246,7 @@ class CoreMasterScreenController extends FlameGame with ExecutionCore, CoreCompo
   }
 
   /// -----
-  /// TODO:
+  /// TODO: Button Dependency Manager
   /// -----
   CoreButtonDependencyManager? _buttonDependencyManager;
   CoreButtonDependencyManager? get getButtonDependencyManager => _buttonDependencyManager;
@@ -262,7 +262,7 @@ class CoreMasterScreenController extends FlameGame with ExecutionCore, CoreCompo
   }
 
   /// -----
-  /// TODO:
+  /// TODO: Text Dependency Manager
   /// -----
   CoreTextDependencyManager? _textDependencyManager;
   CoreTextDependencyManager? get getTextDependencyManager => _textDependencyManager;
@@ -278,7 +278,7 @@ class CoreMasterScreenController extends FlameGame with ExecutionCore, CoreCompo
   }
 
   /// -----
-  /// TODO:
+  /// TODO: Image Dependency Manager
   /// -----
   CoreImageDependencyManager? _imageDependencyManager;
   CoreImageDependencyManager? get getImageDependencyManager => _imageDependencyManager;
@@ -294,7 +294,7 @@ class CoreMasterScreenController extends FlameGame with ExecutionCore, CoreCompo
   }
 
   /// -----
-  /// TODO:
+  /// TODO: Composite Dependency Manager
   /// -----
   CoreCompositeDependencyManager? _compositeDependencyManager;
   CoreCompositeDependencyManager? get getCompositeDependencyManager => _compositeDependencyManager;

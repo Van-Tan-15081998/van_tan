@@ -137,6 +137,8 @@ class CoreTextDependencyManager with ExecutionCore, CoreComponent, CoreState {
       /// TODO:
       /// -----
       await Future.wait([
+        getTextBindingComponentManager?.onSetupRoot().catchError((e) => null) ?? onReportRootIssue(nameFunction: '[onSetupRootForSubCom]'),
+
         ///
       ]);
 
@@ -160,6 +162,8 @@ class CoreTextDependencyManager with ExecutionCore, CoreComponent, CoreState {
       /// TODO:
       /// -----
       await Future.wait([
+        getTextBindingComponentManager?.onInitRoot().catchError((e) => null) ?? onReportRootIssue(nameFunction: '[onInitRootForSubCom]'),
+
         ///
       ]);
 
@@ -183,6 +187,22 @@ class CoreTextDependencyManager with ExecutionCore, CoreComponent, CoreState {
       /// -----
     } catch (e) {
       await onReportRootIssue(nameFunction: '[onResetRootForSubCom]');
+    }
+
+    ///
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  CoreTextBindingComponentManager? _textBindingComponentManager;
+  CoreTextBindingComponentManager? get getTextBindingComponentManager => _textBindingComponentManager;
+  Future<void> onSetTextBindingComponentManager({required CoreTextBindingComponentManager? value, bool? isPriorityOverride}) async {
+    if (isPriorityOverride == true) {
+      _textBindingComponentManager = value;
+    } else {
+      _textBindingComponentManager ??= value;
     }
 
     ///

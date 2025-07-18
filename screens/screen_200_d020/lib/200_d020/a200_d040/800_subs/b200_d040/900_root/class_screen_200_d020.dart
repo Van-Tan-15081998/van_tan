@@ -137,6 +137,8 @@ class CoreButtonDependencyManager with ExecutionCore, CoreComponent, CoreState {
       /// TODO:
       /// -----
       await Future.wait([
+        getButtonBindingComponentManager?.onSetupRoot().catchError((e) => null) ?? onReportRootIssue(nameFunction: '[onSetupRootForSubCom]'),
+
         ///
       ]);
 
@@ -160,6 +162,9 @@ class CoreButtonDependencyManager with ExecutionCore, CoreComponent, CoreState {
       /// TODO:
       /// -----
       await Future.wait([
+        getButtonBindingComponentManager?.onInitRoot().catchError((e) => null) ?? onReportRootIssue(nameFunction: '[onInitRootForSubCom]'),
+
+
         ///
       ]);
 
@@ -183,6 +188,22 @@ class CoreButtonDependencyManager with ExecutionCore, CoreComponent, CoreState {
       /// -----
     } catch (e) {
       await onReportRootIssue(nameFunction: '[onResetRootForSubCom]');
+    }
+
+    ///
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  CoreButtonBindingComponentManager? _buttonBindingComponentManager;
+  CoreButtonBindingComponentManager? get getButtonBindingComponentManager => _buttonBindingComponentManager;
+  Future<void> onSetButtonBindingComponentManager({required CoreButtonBindingComponentManager? value, bool? isPriorityOverride}) async {
+    if (isPriorityOverride == true) {
+      _buttonBindingComponentManager = value;
+    } else {
+      _buttonBindingComponentManager ??= value;
     }
 
     ///

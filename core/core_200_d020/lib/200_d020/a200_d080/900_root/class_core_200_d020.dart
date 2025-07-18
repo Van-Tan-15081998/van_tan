@@ -9,7 +9,7 @@ mixin CoreState {
   /// -----
   CoreStateManagement? _globalStateManagementSystem;
   CoreStateManagement? get getGlobalStateManagementSystem => _globalStateManagementSystem;
-  Future<void> onSetGlobalStateManagementSystem({required CoreStateManagement? value, bool? isPriorityOverride}) async {
+  void onSetGlobalStateManagementSystem({required CoreStateManagement? value, bool? isPriorityOverride}) {
     if (isPriorityOverride == true) {
       _globalStateManagementSystem = value;
     } else {

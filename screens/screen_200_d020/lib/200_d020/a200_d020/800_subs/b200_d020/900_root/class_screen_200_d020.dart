@@ -1,9 +1,9 @@
 import 'package:van_tan_export/van_tan_export.dart';
 
 /// -----
-/// TODO: CoreScreenBindingComponent - [Cấu Trúc] Thành Phần Màn Hình Phụ Thuộc
+/// TODO: CoreScreenBindingComponentManager - [Cấu Trúc] Quản Lý Thành Phần Màn Hình Phụ Thuộc
 /// -----
-class CoreScreenBindingComponent with ExecutionCore {
+class CoreScreenBindingComponentManager with ExecutionCore {
   /// -----
   /// TODO: Attach Root
   /// -----

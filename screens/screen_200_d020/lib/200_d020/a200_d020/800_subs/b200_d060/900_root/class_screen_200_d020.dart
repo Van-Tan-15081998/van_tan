@@ -1,9 +1,9 @@
 import 'package:van_tan_export/van_tan_export.dart';
 
 /// -----
-/// TODO: CoreTextBindingComponent - [Cấu Trúc] Thành Phần Văn Bản Phụ Thuộc
+/// TODO: CoreTextBindingComponentManager - [Cấu Trúc] Quản Lý Thành Phần Văn Bản Phụ Thuộc
 /// -----
-class CoreTextBindingComponent with ExecutionCore {
+class CoreTextBindingComponentManager with ExecutionCore {
   /// -----
   /// TODO: Attach Root
   /// -----

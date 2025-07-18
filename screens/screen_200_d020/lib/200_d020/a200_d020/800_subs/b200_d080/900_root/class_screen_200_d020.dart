@@ -1,9 +1,9 @@
 import 'package:van_tan_export/van_tan_export.dart';
 
 /// -----
-/// TODO: CoreImageBindingComponent - [Cấu Trúc] Thành Phần Hình Ảnh Phụ Thuộc
+/// TODO: CoreImageBindingComponentManager - [Cấu Trúc] Quản Lý Thành Phần Hình Ảnh Phụ Thuộc
 /// -----
-class CoreImageBindingComponent with ExecutionCore {
+class CoreImageBindingComponentManager with ExecutionCore {
   /// -----
   /// TODO: Attach Root
   /// -----

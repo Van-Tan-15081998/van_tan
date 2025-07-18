@@ -190,7 +190,7 @@ abstract class CoreStateManagement with ExecutionCore {
   }
 
   /// -----
-  /// TODO:
+  /// TODO: Cấu Trúc Cây
   /// -----
   CoreStateManagement? _parent;
   CoreStateManagement? get getParent => _parent;

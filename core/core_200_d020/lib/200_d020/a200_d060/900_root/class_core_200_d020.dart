@@ -9,7 +9,7 @@ mixin CoreComponent {
   /// -----
   double? _sizeDx;
   double? get getSizeDx => _sizeDx;
-  Future<void> onSetSizeDx({required double? value, bool? isPriorityOverride}) async {
+  void onSetSizeDx({required double? value, bool? isPriorityOverride}) {
     if (isPriorityOverride == true) {
       if (value?.isNaN == false && value?.isFinite == true) {
         _sizeDx = value;
@@ -20,6 +20,13 @@ mixin CoreComponent {
       }
     }
 
+    if (getCurrentComponent is PositionComponent) {
+      (getCurrentComponent as PositionComponent).size.x = getSizeDx ?? 0;
+    }
+    if (getCurrentComponent is TextComponent) {
+      (getCurrentComponent as TextComponent).size.x = getSizeDx ?? 0;
+    }
+
     return;
   }
 
@@ -28,7 +35,7 @@ mixin CoreComponent {
   /// -----
   double? _sizeDy;
   double? get getSizeDy => _sizeDy;
-  Future<void> onSetSizeDy({required double? value, bool? isPriorityOverride}) async {
+  void onSetSizeDy({required double? value, bool? isPriorityOverride}) {
     if (isPriorityOverride == true) {
       if (value?.isNaN == false && value?.isFinite == true) {
         _sizeDy = value;
@@ -39,6 +46,13 @@ mixin CoreComponent {
       }
     }
 
+    if (getCurrentComponent is PositionComponent) {
+      (getCurrentComponent as PositionComponent).size.y = getSizeDy ?? 0;
+    }
+    if (getCurrentComponent is TextComponent) {
+      (getCurrentComponent as TextComponent).size.y = getSizeDy ?? 0;
+    }
+
     return;
   }
 
@@ -47,7 +61,7 @@ mixin CoreComponent {
   /// -----
   double? _positionDx;
   double? get getPositionDx => _positionDx;
-  Future<void> onSetPositionDx({required double? value, bool? isPriorityOverride}) async {
+  void onSetPositionDx({required double? value, bool? isPriorityOverride}) {
     if (isPriorityOverride == true) {
       if (value?.isNaN == false && value?.isFinite == true) {
         _positionDx = value;
@@ -58,6 +72,13 @@ mixin CoreComponent {
       }
     }
 
+    if (getCurrentComponent is PositionComponent) {
+      (getCurrentComponent as PositionComponent).position.x = getPositionDx ?? 0;
+    }
+    if (getCurrentComponent is TextComponent) {
+      (getCurrentComponent as TextComponent).position.x = getPositionDx ?? 0;
+    }
+
     return;
   }
 
@@ -66,7 +87,7 @@ mixin CoreComponent {
   /// -----
   double? _positionDy;
   double? get getPositionDy => _positionDy;
-  Future<void> onSetPositionDy({required double? value, bool? isPriorityOverride}) async {
+  void onSetPositionDy({required double? value, bool? isPriorityOverride}) {
     if (isPriorityOverride == true) {
       if (value?.isNaN == false && value?.isFinite == true) {
         _positionDy = value;
@@ -77,6 +98,45 @@ mixin CoreComponent {
       }
     }
 
+    if (getCurrentComponent is PositionComponent) {
+      (getCurrentComponent as PositionComponent).position.y = getPositionDy ?? 0;
+    }
+    if (getCurrentComponent is TextComponent) {
+      (getCurrentComponent as TextComponent).position.y = getPositionDy ?? 0;
+    }
+
+    return;
+  }
+
+  /// -----
+  /// TODO: Current Component
+  /// -----
+  Component? _currentComponent;
+  Component? get getCurrentComponent => _currentComponent;
+  void onSetCurrentComponent({required Component? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _currentComponent = value;
+    } else {
+      _currentComponent ??= value;
+    }
+
+    ///
+    return;
+  }
+
+  /// -----
+  /// TODO: Parent Component
+  /// -----
+  Component? _parentComponent;
+  Component? get getParentComponent => _parentComponent;
+  void onSetParentComponent({required Component? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _parentComponent = value;
+    } else {
+      _parentComponent ??= value;
+    }
+
+    ///
     return;
   }
 
@@ -123,6 +183,46 @@ mixin CoreComponent {
   }
 
   /// -----
+  /// TODO: Kích Hoạt Hiển Thị
+  /// -----
+  Future<void> onActiveShow() async {
+    await onAddToParent();
+
+    return;
+  }
+
+  /// -----
+  /// TODO: Huỷ Kích Hoạt Hiển Thị
+  /// -----
+  Future<void> onInActiveShow() async {
+    await onRemoveFromParent();
+
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  Future<void> onAddToParent() async {
+    if (getParentComponent != null && getCurrentComponent != null && getCurrentComponent?.isMounted == false) {
+      await getParentComponent?.add(getCurrentComponent!);
+    }
+
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  Future<void> onRemoveFromParent() async {
+    if (getCurrentComponent?.isMounted == true) {
+      getCurrentComponent?.removeFromParent();
+    }
+
+    return;
+  }
+
+  /// -----
   /// TODO:
   /// -----
   Future<void> onAddComponent({
@@ -134,11 +234,13 @@ mixin CoreComponent {
     try {
       if (flameGame != null) {
         if (childComponent != null && childComponent.isMounted == false) {
-          await flameGame.add(childComponent);
+          // await flameGame.add(childComponent); // Update v2
+          childComponent.parent = flameGame;
         }
       } else if (parentComponent != null) {
         if (childComponent != null && childComponent.isMounted == false) {
-          await parentComponent.add(childComponent);
+          // await parentComponent.add(childComponent); // Update v2
+          childComponent.parent = parentComponent;
         }
       }
     } catch (e) {

@@ -137,6 +137,8 @@ class CoreScreenDependencyManager with ExecutionCore, CoreComponent, CoreState {
       /// TODO:
       /// -----
       await Future.wait([
+        getScreenBindingComponentManager?.onSetupRoot().catchError((e) => null) ?? onReportRootIssue(nameFunction: '[onSetupRootForSubCom]'),
+
         ///
       ]);
 
@@ -160,6 +162,9 @@ class CoreScreenDependencyManager with ExecutionCore, CoreComponent, CoreState {
       /// TODO:
       /// -----
       await Future.wait([
+        getScreenBindingComponentManager?.onInitRoot().catchError((e) => null) ?? onReportRootIssue(nameFunction: '[onInitRootForSubCom]'),
+
+
         ///
       ]);
 
@@ -183,6 +188,22 @@ class CoreScreenDependencyManager with ExecutionCore, CoreComponent, CoreState {
       /// -----
     } catch (e) {
       await onReportRootIssue(nameFunction: '[onResetRootForSubCom]');
+    }
+
+    ///
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  CoreScreenBindingComponentManager? _screenBindingComponentManager;
+  CoreScreenBindingComponentManager? get getScreenBindingComponentManager => _screenBindingComponentManager;
+  Future<void> onSetScreenBindingComponentManager({required CoreScreenBindingComponentManager? value, bool? isPriorityOverride}) async {
+    if (isPriorityOverride == true) {
+      _screenBindingComponentManager = value;
+    } else {
+      _screenBindingComponentManager ??= value;
     }
 
     ///
